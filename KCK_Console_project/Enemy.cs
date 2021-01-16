@@ -6,13 +6,6 @@ namespace KCK_Console_project
 {
     class Enemy
     {
-        /*
-         * - Wsadzic przeciwnikow do listy
-         * - foreachem przechodze po liscie
-         * - dla kazdego przeciwnika wykona sie Move()
-         * - przeciwnicy beda ustawiac sie w kolejki 
-         */
-
         private int hp;
         private int dmg;
         private int speed;
@@ -20,7 +13,7 @@ namespace KCK_Console_project
         private int posX;
         private int posY;
 
-        //konstruktor
+        // Konstruktor.
         public Enemy()
         {
             hp = 300;
@@ -32,7 +25,7 @@ namespace KCK_Console_project
             posY = 0;
         }
 
-        //gettery
+        // Gettery.
         public int GetX()
         {
             return posX;
@@ -50,29 +43,26 @@ namespace KCK_Console_project
             return hp;
         }
 
-        //settery
+        // Settery.
         public void SetHP(int hp)
         {
             this.hp = hp;
         }
 
-        //metody
-        public void Move(char[,] board)//board[15, 10]
+        // Metody.
+        public void Move(char[,] board)
         {
-            //jezeli wyszedl by za sciane
+            // Jezeli wyszedl by za sciane.
             if (posY + speed >= 10)
                 return;
-            //jezeli przed nim stoi inny przeciwnik
+            // Jezeli przed nim stoi inny przeciwnik.
             if (board[posY + speed, posX] == '@')
                 return;
-
             posY += speed;
         }
         public void Hit(int dmg)
         {
             hp -= dmg;
-
         }
-
     }
 }

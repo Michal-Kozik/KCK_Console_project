@@ -14,7 +14,7 @@ namespace KCK_Console_project
         public static int stone = 1000;
         public static int hp = 100;
         public static int score = 0;
-        //20 FPS
+        // 20 FPS.
         private static int woodFrames = 0;
         private static int stoneFrames = 0;
         private static int enemyFrames = 0;
@@ -38,38 +38,18 @@ namespace KCK_Console_project
             board.CreateBoard();
             board.PrintBoard();
             render.HeroPrint(hero);
-            Console.SetCursorPosition(0, 16);
-            Console.Write("Drewno - " + wood);
-            Console.SetCursorPosition(0, 17);
-            Console.Write("Kamien - " + stone);
-            Console.SetCursorPosition(0, 18);
-            Console.Write("HP: " + hp);
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.SetCursorPosition(0, 19);
-            Console.Write("Zycie przeciwnikow ===== Amunicja ========");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            for (int i = 0; i < 10; i++)
-            {
-                Console.SetCursorPosition(0, i + 20);
-                Console.Write("Przeciwnik " + i + " : " + 0 + "     ");
-                Console.SetCursorPosition(25, i + 20);
-                Console.Write("Wiezyczka nr " + i + ": " + 0 + "     ");
-            }
-            //testowanie
-            //Enemy enemy = new Enemy();
-            //enemyList.Add(enemy);
-            //render.EnemyPrint(enemy);
+            render.InfoPrint();
 
             while (true)
             {
-                //zliczanie klatek
+                // Zliczanie klatek.
                 if (woodFrames < 202)
                     woodFrames += 1;
                 if (stoneFrames < 202)
                     stoneFrames += 1;
                 enemyFrames %= 201;
                 enemyFrames += 1;
-                //nasluchiwanie sterowania
+                // Nasluchiwanie sterowania.
                 if (Console.KeyAvailable)
                 {
                     switch (Console.ReadKey().Key)
@@ -93,7 +73,7 @@ namespace KCK_Console_project
                         case ConsoleKey.Enter:
                             collected = hero.Collect(resources);
                             render.CollectRender(hero, resources);
-                            //budowanie
+                            // Budowanie.
                             if (hero.GetY() == 11 && hero.CanPlace(turretList) == true)
                             {
                                 Turret turret = new Turret(hero);
@@ -105,7 +85,7 @@ namespace KCK_Console_project
                                 render.UpdateResources();
                                 render.RefreshAmmo(turret);
                             }
-                            //ulepszanie
+                            // Ulepszanie.
                             else if (hero.GetY() == 11 && hero.CanUpgrade(turretList) == true)
                             {
                                 if (turretList.ElementAt(hero.GetX()) != null)
@@ -123,10 +103,10 @@ namespace KCK_Console_project
                     }
                 }
 
-                //poruszanie sie przeciwnikow i tworzenie
+                // Poruszanie sie przeciwnikow i tworzenie.
                 if (enemyFrames % 50 == 0)
                 {
-                    //renderowanie pola z przeciwnikami
+                    // Renderowanie pola z przeciwnikami.
                     if (enemyList.Count > 0)
                         foreach (Enemy e in enemyList)
                         {
@@ -140,7 +120,7 @@ namespace KCK_Console_project
                         }
                     render.EnemyMoveAll(enemyList, board.GetBoard());
 
-                    //tworzenie nowego przeciwnika
+                    // Tworzenie nowego przeciwnika.
                     if (enemyFrames == 200)
                     {
                         Enemy e = new Enemy();
@@ -149,21 +129,21 @@ namespace KCK_Console_project
                     }
                 }
 
-                //zadawanie obrazen przeciwnikom
+                // Zadawanie obrazen przeciwnikom.
                 if (enemyFrames % 20 == 0)
                 {
                     List<Enemy> pom = new List<Enemy>();
                     bool shouldRefresh = false;
                     foreach (Enemy e in enemiesUnderWall)
                     {
-                        //jesli na scianie stoi wiezyczka przed przeciwnikiem
+                        // Jesli na scianie stoi wiezyczka przed przeciwnikiem.
                         if (e != null && turretList.ElementAt(e.GetX()) != null)
                         {
                             Turret t = turretList.ElementAt(e.GetX());
                             e.Hit(t.GetDmg());
-                            //wiezyczka traci pocisk
+                            // Wiezyczka traci pocisk.
                             t.Shot();
-                            //jesli wiezyczka nie ma juz naboi
+                            // Jesli wiezyczka nie ma juz naboi.
                             if (t.GetAmmo() <= 0)
                             {
                                 turretList.RemoveAt(e.GetX());
@@ -171,8 +151,8 @@ namespace KCK_Console_project
                                 render.UpdateWall(t, board.GetBoard());
                             }
                         }
-                        //jesli hp przeciwnika spadnie do 0
-                        //pomocnicza lista do usuwania przeciwnikow
+                        // jesli hp przeciwnika spadnie do 0.
+                        // Pomocnicza lista do usuwania przeciwnikow.
                         if (e != null && e.GetHP() <= 0)
                         {
                             pom.Add(e);
@@ -197,7 +177,7 @@ namespace KCK_Console_project
                     }
                 }
 
-                //zadawanie obrazen przez przeciwnikow
+                // Zadawanie obrazen przez przeciwnikow.
                 if (enemyFrames % 100 == 0)
                 {
                     foreach (Enemy e in enemyList)
@@ -211,10 +191,13 @@ namespace KCK_Console_project
                             Console.ForegroundColor = ConsoleColor.Gray;
                         }
                     }
+                    if (hp <= 0)
+                    {
+                        return;
+                    }
                 }
 
-
-                //czy zebrano zasoby
+                // Czy zebrano zasoby.
                 if (collected == 0)
                 {
                     stoneFrames = 0;
@@ -226,8 +209,7 @@ namespace KCK_Console_project
                     collected = 2;
                 }
 
-
-                //generowanie zasobow
+                // Generowanie zasobow.
                 if (woodFrames == 100 || woodFrames == 200)
                 {
                     resources.WoodNextPhase();
@@ -241,32 +223,64 @@ namespace KCK_Console_project
                     Console.Write(resources.GetCurrentSymbol(0));
                 }
 
-                //czekanie
+                // Czekanie.
                 Thread.Sleep(50);
             }
         }
 
         public void menu()
         {
-            Console.WriteLine("1. opcja");
-            Console.WriteLine("2. opcja");
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("==========[Sterowanie]==========");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("Strzalki - poruszanie sie bohaterem.");
+            Console.WriteLine("Enter - interakcja (zbieranie zasobow oraz stawianie wiezyczek).");
+            Console.WriteLine("");
+            Console.WriteLine("Wcisnij enter by kontynuowac...");
 
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    if (Console.ReadKey().Key == ConsoleKey.Enter)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Powodzenia!");
+                        Thread.Sleep(1000);
+                        return;
+                    }
+                }
+            }
+        }
+
+        public bool End()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("==========[Podsumowanie]==========");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("Twoj wynik: " + score + "pkt.");
+            Console.WriteLine("");
+            Console.WriteLine("Chcesz zagrac ponownie? (Y/N)");
+            Console.Write("Moja decyzja:");
             while (true)
             {
                 if (Console.KeyAvailable)
                 {
                     switch (Console.ReadKey().Key)
                     {
-                        case ConsoleKey.DownArrow:
-                            Console.WriteLine("Wybrano 1.");
-                            return;
-                        case ConsoleKey.UpArrow:
-                            Console.WriteLine("Wybrano 2.");
-                            return;
-                        case ConsoleKey.Spacebar:
-                            Console.WriteLine("WCISNIETO SPACJE");
-                            Thread.Sleep(2000);
-                            return;
+                        case ConsoleKey.Y:
+                            score = 0;
+                            wood = 1000;
+                            stone = 1000;
+                            hp = 100;
+                            woodFrames = 0;
+                            stoneFrames = 0;
+                            enemyFrames = 0;
+                            return true;
+                        case ConsoleKey.N:
+                            return false;
                     }
                 }
             }

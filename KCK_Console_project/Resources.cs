@@ -11,7 +11,7 @@ namespace KCK_Console_project
         private char woodCurrentSymbol;
         private char stoneCurrentSymbol;
 
-        //konstruktor
+        // Konstruktor.
         public Resources()
         {
             woodCurrentPhase = 0;
@@ -20,8 +20,9 @@ namespace KCK_Console_project
             stoneCurrentSymbol = 's';
         }
 
-        //gettery
-        // 1 - drewno, 0 - kamien
+        // Gettery.
+        // 1 - drewno.
+        // 0 - kamien.
         public int GetCurrentPhase(int which)
         {
             if (which == 1)
@@ -37,7 +38,7 @@ namespace KCK_Console_project
                 return stoneCurrentSymbol;
         }
 
-        //metody
+        // Metody.
         public void WoodNextPhase()
         {
             woodCurrentPhase += 1;

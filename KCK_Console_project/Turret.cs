@@ -6,7 +6,6 @@ namespace KCK_Console_project
 {
     class Turret
     {
-        //pola
         private int level;
         private int ammo;
         private int dmg;
@@ -14,7 +13,7 @@ namespace KCK_Console_project
         private int posX;
         private int posY;
 
-        //konstruktor
+        // Konstruktor.
         public Turret(Hero hero)
         {
             level = 1;
@@ -25,9 +24,7 @@ namespace KCK_Console_project
             posX = hero.GetX();
         }
 
-
-        //gettery
-
+        // Gettery.
         public int GetX()
         {
             return posX;
@@ -44,7 +41,6 @@ namespace KCK_Console_project
         {
             return ammo;
         }
-
         public int GetLevel()
         {
             return level;
@@ -78,7 +74,7 @@ namespace KCK_Console_project
             return 75;
         }
 
-        //metody
+        // Metody.
         public void Upgrade()
         {
             level += 1;

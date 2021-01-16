@@ -11,7 +11,7 @@ namespace KCK_Console_project
         private int posX;
         private int posY;
 
-        //konstruktor
+        // Konstruktor.
         public Hero()
         {
             posX = 5;
@@ -19,7 +19,7 @@ namespace KCK_Console_project
             GameBoard.board[posY, posX] = 'O';
         }
 
-        //gettery
+        // Gettery.
         public int GetX()
         {
             return posX;
@@ -29,23 +29,23 @@ namespace KCK_Console_project
             return posY;
         }
 
-        //poruszanie sie
+        // Poruszanie sie.
         public void MoveLeft()
         {
-            //zeby nie wyjsc za sciane
+            // Zeby nie wyjsc za sciane.
             if (posX == 0)
                 return;
-            //zeby nie wejsc na drewno
+            // Zeby nie wejsc na drewno.
             if (posX == 1 && posY == 14)
                 return;
             this.posX -= 1;
         }
         public void MoveRight()
         {
-            //zeby nie wyjsc za sciane
+            // Zeby nie wyjsc za sciane.
             if (posX == 9)
                 return;
-            //zeby nie wejsc na kamien
+            // Zeby nie wejsc na kamien.
             if (posX == 8 && posY == 14)
                 return;
             this.posX += 1;
@@ -58,21 +58,21 @@ namespace KCK_Console_project
         }
         public void MoveDown()
         {
-            //zeby nie wyjsc za sciane
+            // Zeby nie wyjsc za sciane.
             if (posY == 14)
                 return;
-            //zeby nie wejsc na drewno
+            // Zeby nie wejsc na drewno.
             if (posX == 0 && posY == 13)
                 return;
-            //zeby nie wejsc na kamien
+            // Zeby nie wejsc na kamien.
             if (posX == 9 && posY == 13)
                 return;
             this.posY += 1;
         }
 
-        // 0 - zebrano kamien
-        // 1 - zebrano drewno
-        // 2 - nie zebrano nic
+        // 0 - zebrano kamien.
+        // 1 - zebrano drewno.
+        // 2 - nie zebrano nic.
         public int Collect(Resources res)
         {
             if (posX == 1 && posY == 14)
@@ -94,17 +94,9 @@ namespace KCK_Console_project
             return 2;
         }
 
-        //czy mozna postawic wiezyczke
+        // Czy mozna postawic wiezyczke.
         public bool CanPlace(List<Turret> turretList)
         {
-            //stoi jakas wiezyczka
-            /*foreach (Turret turret in turretList)
-            {
-                if (turret.GetX() == posX)
-                {
-                    return false;
-                }
-            }*/
             if (turretList.ElementAt(posX) == null)
             {
                 if (GameConsole.wood >= Turret.GetBuildCost() && GameConsole.stone >= Turret.GetBuildCost())
@@ -115,20 +107,9 @@ namespace KCK_Console_project
             else
                 return false;
         }
-        //czy mozna ulepszyc wiezyczke
+        // Czy mozna ulepszyc wiezyczke.
         public bool CanUpgrade(List<Turret> turretList)
         {
-            //stoi jakas wiezyczka
-            /*foreach (Turret turret in turretList)
-            {
-                if (turret.GetX() == posX)
-                {
-                    if (GameConsole.wood >= turret.GetUpgradeCost() && GameConsole.stone >= turret.GetUpgradeCost())
-                        return true;
-                    else
-                        return false;
-                }
-            }*/
             if (turretList.ElementAt(posX) != null)
             {
                 Turret t = turretList.ElementAt(posX);

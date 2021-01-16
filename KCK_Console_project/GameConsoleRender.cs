@@ -10,20 +10,8 @@ namespace KCK_Console_project
     class GameConsoleRender
     {
         private string myHero = "O";
-        private string enemySymbol = "@";
         private int posX;
         private int posY;
-        //private char[,] board = new char[11, 10];   //[wiersze, kolumny]
-
-        /*public GameConsoleRender()
-        {
-            for (int x = 0; x < 10; x++)
-                for (int y = 0; y < 10; y++)
-                    board[y, x] = '.';
-
-            for (int i = 0; i < 10; i++)
-                board[10, i] = '#';
-        }*/
 
         public void HeroPrint(Hero hero)
         {
@@ -31,6 +19,33 @@ namespace KCK_Console_project
             posY = hero.GetY();
             Console.SetCursorPosition(0, posY);
             Console.WriteLine(myHero.PadLeft(posX + 1, '.') + new string('.', 9 - posX));
+        }
+
+        public void InfoPrint()
+        {
+            Console.SetCursorPosition(0, 15);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Punkty: " + GameConsole.score);
+            Console.SetCursorPosition(0, 16);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("Drewno - " + GameConsole.wood);
+            Console.SetCursorPosition(0, 17);
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("Kamien - " + GameConsole.stone);
+            Console.SetCursorPosition(0, 18);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.Write("HP: " + GameConsole.hp);
+            Console.SetCursorPosition(0, 19);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.Write("Zycie przeciwnikow ===== Amunicja ========");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            for (int i = 0; i < 10; i++)
+            {
+                Console.SetCursorPosition(0, i + 20);
+                Console.Write("Przeciwnik " + i + " : " + 0 + "     ");
+                Console.SetCursorPosition(25, i + 20);
+                Console.Write("Wiezyczka nr " + i + ": " + 0 + "     ");
+            }
         }
 
         public void MoveHorizontalRender(Hero hero, Resources resources)
@@ -89,24 +104,24 @@ namespace KCK_Console_project
         {
             posX = hero.GetX();
             posY = hero.GetY();
-            //drewno
+            // Drewno.
             if (posX == 1 && posY == 14)
             {
                 Console.SetCursorPosition(0, 14);
                 Console.Write(resources.GetCurrentSymbol(1));
-                //wyswietlenie wyniku
+                // Wyswietlenie wyniku.
                 Console.SetCursorPosition(0, 16);
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.Write("Drewno - " + GameConsole.wood + "     ");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 return;
             }
-            //kamien
+            // Kamien.
             if (posX == 8 && posY == 14)
             {
                 Console.SetCursorPosition(9, 14);
                 Console.Write(resources.GetCurrentSymbol(0));
-                //wyswietleniue wyniku
+                // Wyswietleniue wyniku.
                 Console.SetCursorPosition(0, 17);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("Kamien - " + GameConsole.stone + "     ");
@@ -130,7 +145,7 @@ namespace KCK_Console_project
         {
             posX = turret.GetX();
             posY = turret.GetY();
-            board[10, posX] = 'X';
+            board[10, posX] = '#';
             Console.SetCursorPosition(0, 10);
             for (int i = 0; i < 10; i++)
                 Console.Write(board[10, i]);
@@ -144,24 +159,20 @@ namespace KCK_Console_project
             Console.SetCursorPosition(0, 0);
             for (int i = 0; i < 10; i++)
                 Console.Write(board[0, i]);
-            //Console.SetCursorPosition(0, posY);
-            //Console.WriteLine(enemySymbol.PadLeft(posX + 1, '.') + new string('.', 9 - posX));
         }
-
 
         public void EnemyMoveAll(List<Enemy> enemies, char[,] board)
         {
             foreach (Enemy e in enemies)
             {
-                //bedzie problem jak beda stali za sb
                 board[e.GetY() - 1, e.GetX()] = '.';
                 board[e.GetY(), e.GetX()] = '@';
             }
             Console.SetCursorPosition(0, 0);
-            for (int y = 0; y < 10; y++)    //KOLUMNY
+            for (int y = 0; y < 10; y++)    // KOLUMNY
             {
                 Console.SetCursorPosition(0, y);
-                for (int x = 0; x < 10; x++)    //WIERSZE
+                for (int x = 0; x < 10; x++)    // WIERSZE
                 {
                     Console.Write(board[y, x]);
                 }
@@ -186,19 +197,10 @@ namespace KCK_Console_project
         {
             posX = turret.GetX();
             posY = turret.GetY();
-            //board[10, posX] = Convert.ToChar(turret.GetLevelChar());
             board[10, posX] = turret.GetLevelChar();
             Console.SetCursorPosition(0, 10);
             for (int i = 0; i < 10; i++)
                 Console.Write(board[10, i]);
-        }
-
-        //ZBEDNE
-        public void UpgradeTurret(Turret turret, char[,] board)
-        {
-            posX = turret.GetX();
-            posY = turret.GetY();
-
         }
 
         public void ShowDmgDealt(List<Enemy> enemiesUnderWall, List<Turret> turrets)

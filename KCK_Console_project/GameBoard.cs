@@ -8,12 +8,13 @@ namespace KCK_Console_project
     {
         public static char[,] board = new char[15, 10]; //wiersze, kolumny
 
-        //getter
+        // Getter.
         public char[,] GetBoard()
         {
             return board;
         }
 
+        // Tworzenie mapy
         public void CreateBoard()
         {
             for (int i = 0; i < 15; i++)
@@ -29,6 +30,7 @@ namespace KCK_Console_project
             board[14, 9] = 's';
         }
 
+        // Wyswietlanie mapy
         public void PrintBoard()
         {
             for (int i = 0; i < 15; i++)
@@ -40,7 +42,5 @@ namespace KCK_Console_project
                 Console.WriteLine();
             }
         }
-
-
     }
 }
