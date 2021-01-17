@@ -258,7 +258,7 @@ namespace KCK_Console_project
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("==========[Podsumowanie]==========");
+            Console.WriteLine("==========[Koniec gry]==========");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("Twoj wynik: " + score + "pkt.");
             Console.WriteLine("");
