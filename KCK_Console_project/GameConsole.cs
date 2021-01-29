@@ -157,10 +157,17 @@ namespace KCK_Console_project
                         {
                             pom.Add(e);
                             shouldRefresh = true;
+                            string text;
                             score += 250;
-                            Console.SetCursorPosition(0, 15);
+                            Console.SetCursorPosition(0, 16);
+                            Console.ForegroundColor = ConsoleColor.Magenta; //
+                            Console.Write("|");                             //
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.Write("Punkty: " + score);
+                            text = "Punkty: " + score;                      //
+                            Console.Write(new string(' ', 30 - text.Length));   //
+                            Console.ForegroundColor = ConsoleColor.Magenta; //
+                            Console.Write("|");                             //
                             Console.ForegroundColor = ConsoleColor.Gray;
                         }
                     }
@@ -184,10 +191,17 @@ namespace KCK_Console_project
                     {
                         if (e.GetY() == 9)
                         {
+                            string text;
                             hp -= e.GetDmg();
-                            Console.SetCursorPosition(0, 18);
+                            Console.SetCursorPosition(0, 19);
+                            Console.ForegroundColor = ConsoleColor.Magenta; //
+                            Console.Write("|");                             //
                             Console.ForegroundColor = ConsoleColor.DarkRed;
-                            Console.WriteLine("HP: " + hp + ' ');
+                            Console.Write("HP: " + hp);
+                            text = "HP: " + hp;                      //
+                            Console.Write(new string(' ', 30 - text.Length));   //
+                            Console.ForegroundColor = ConsoleColor.Magenta; //
+                            Console.Write("|");                             //
                             Console.ForegroundColor = ConsoleColor.Gray;
                         }
                     }

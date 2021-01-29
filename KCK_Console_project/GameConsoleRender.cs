@@ -23,29 +23,81 @@ namespace KCK_Console_project
 
         public void InfoPrint()
         {
-            Console.SetCursorPosition(0, 15);
+            string text;                                        //
+            Console.SetCursorPosition(0, 15);                   //
+            Console.ForegroundColor = ConsoleColor.Magenta;     //
+            Console.Write("/" + new string('-', 30) + "\\");    //
+
+            Console.SetCursorPosition(0, 16);
+            Console.ForegroundColor = ConsoleColor.Magenta;     //
+            Console.Write("|");                                 //
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Punkty: " + GameConsole.score);
-            Console.SetCursorPosition(0, 16);
+            text = "Punkty: " + GameConsole.score;              //
+            Console.ForegroundColor = ConsoleColor.Magenta;     //
+            Console.Write(new string(' ', 30 - text.Length) + "|"); //
+
+            Console.SetCursorPosition(0, 17);
+            Console.ForegroundColor = ConsoleColor.Magenta;     //
+            Console.Write("|");                                 //
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("Drewno - " + GameConsole.wood);
-            Console.SetCursorPosition(0, 17);
+            text = "Drewno - " + GameConsole.wood;              //
+            Console.ForegroundColor = ConsoleColor.Magenta;     //
+            Console.Write(new string(' ', 30 - text.Length) + "|"); //
+
+            Console.SetCursorPosition(0, 18);
+            Console.ForegroundColor = ConsoleColor.Magenta;     //
+            Console.Write("|");                                 //
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("Kamien - " + GameConsole.stone);
-            Console.SetCursorPosition(0, 18);
+            text = "Kamien - " + GameConsole.stone;              //
+            Console.ForegroundColor = ConsoleColor.Magenta;     //
+            Console.Write(new string(' ', 30 - text.Length) + "|"); //
+
+            Console.SetCursorPosition(0, 19);
+            Console.ForegroundColor = ConsoleColor.Magenta;     //
+            Console.Write("|");                                 //
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("HP: " + GameConsole.hp);
-            Console.SetCursorPosition(0, 19);
+            text = "HP: " + GameConsole.hp;                     //
+            Console.ForegroundColor = ConsoleColor.Magenta;     //
+            Console.Write(new string(' ', 30 - text.Length) + "|"); //
+
+            Console.SetCursorPosition(0, 20);
+            Console.Write("\\" + new string('-', 30) + "/");    //
+
+            Console.SetCursorPosition(0, 21);
+            Console.Write("/" + new string('-', 46) + "\\");
+
+            Console.SetCursorPosition(0, 22);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("|");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write("Zycie przeciwnikow ===== Amunicja ========");
+            text = "Zycie przeciwnikow ===== Amunicja ========";
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write(new string(' ', 46 - text.Length) + "|");
+
             Console.ForegroundColor = ConsoleColor.Gray;
             for (int i = 0; i < 10; i++)
             {
-                Console.SetCursorPosition(0, i + 20);
+                Console.SetCursorPosition(0, i + 20 + 3);
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write("|");
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("Przeciwnik " + i + " : " + 0 + "     ");
-                Console.SetCursorPosition(25, i + 20);
+                Console.SetCursorPosition(25, i + 20 + 3);
                 Console.Write("Wiezyczka nr " + i + ": " + 0 + "     ");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write("|");
             }
+
+            Console.SetCursorPosition(0, 33);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("\\" + new string('-', 46) + "/");
+            
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
 
         public void MoveHorizontalRender(Hero hero, Resources resources)
@@ -107,24 +159,36 @@ namespace KCK_Console_project
             // Drewno.
             if (posX == 1 && posY == 14)
             {
+                string text;
                 Console.SetCursorPosition(0, 14);
                 Console.Write(resources.GetCurrentSymbol(1));
                 // Wyswietlenie wyniku.
-                Console.SetCursorPosition(0, 16);
+                Console.SetCursorPosition(0, 17);
+                Console.ForegroundColor = ConsoleColor.Magenta;     //
+                Console.Write("|");                                 //
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.Write("Drewno - " + GameConsole.wood + "     ");
+                text = "Drewno - " + GameConsole.wood + "     ";    //
+                Console.ForegroundColor = ConsoleColor.Magenta;     //
+                Console.Write(new string(' ', 30 - text.Length) + "|"); //
                 Console.ForegroundColor = ConsoleColor.Gray;
                 return;
             }
             // Kamien.
             if (posX == 8 && posY == 14)
             {
+                string text;
                 Console.SetCursorPosition(9, 14);
                 Console.Write(resources.GetCurrentSymbol(0));
                 // Wyswietleniue wyniku.
-                Console.SetCursorPosition(0, 17);
+                Console.SetCursorPosition(0, 18);
+                Console.ForegroundColor = ConsoleColor.Magenta;     //
+                Console.Write("|");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("Kamien - " + GameConsole.stone + "     ");
+                text = "Kamien - " + GameConsole.stone + "     ";    //
+                Console.ForegroundColor = ConsoleColor.Magenta;     //
+                Console.Write(new string(' ', 30 - text.Length) + "|"); //
                 Console.ForegroundColor = ConsoleColor.Gray;
                 return;
             }
@@ -132,12 +196,25 @@ namespace KCK_Console_project
 
         public void UpdateResources()
         {
-            Console.SetCursorPosition(0, 16);
+            string text;
+            Console.SetCursorPosition(0, 17);
+            Console.ForegroundColor = ConsoleColor.Magenta; //
+            Console.Write("|");                             //
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("Drewno - " + GameConsole.wood + "     ");
-            Console.SetCursorPosition(0, 17);
+            text = "Drewno - " + GameConsole.wood + "     ";//
+            Console.ForegroundColor = ConsoleColor.Magenta; //
+            Console.Write(new string(' ', 30 - text.Length) + "|"); //
+
+            Console.SetCursorPosition(0, 18);
+            Console.ForegroundColor = ConsoleColor.Magenta; //
+            Console.Write("|");                             //
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write("Kamien - " + GameConsole.stone + "     ");
+            text = "Kamien - " + GameConsole.stone + "     ";//
+            Console.ForegroundColor = ConsoleColor.Magenta; //
+            Console.Write(new string(' ', 30 - text.Length) + "|"); //
+
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
@@ -216,18 +293,23 @@ namespace KCK_Console_project
                         magazine = 0;
                     else
                         magazine = turrets.ElementAt(e.GetX()).GetAmmo();
-                    Console.SetCursorPosition(0, e.GetX() + 20);
+                    Console.SetCursorPosition(0, e.GetX() + 23);
+                    Console.ForegroundColor = ConsoleColor.Magenta;     //
+                    Console.Write("|");                                 //
+                    Console.ForegroundColor = ConsoleColor.Gray;        //
                     Console.Write("Przeciwnik " + e.GetX() + " : " + e.GetHP() + "     ");
-                    Console.SetCursorPosition(25, e.GetX() + 20);
+                    Console.SetCursorPosition(25, e.GetX() + 23);
                     Console.Write("Wiezyczka nr " + e.GetX() + ": " + magazine + "     ");
-
+                    Console.ForegroundColor = ConsoleColor.Magenta;     //
+                    Console.Write("|");                                 //
+                    Console.ForegroundColor = ConsoleColor.Gray;        //
                 }
             }
         }
 
         public void RefreshAmmo(Turret turret)
         {
-            Console.SetCursorPosition(25, turret.GetX() + 20);
+            Console.SetCursorPosition(25, turret.GetX() + 23);
             Console.Write("Wiezyczka nr " + turret.GetX() + ": " + turret.GetAmmo() + "     ");
         }
     }
