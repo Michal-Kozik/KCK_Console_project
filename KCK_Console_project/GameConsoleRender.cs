@@ -24,11 +24,11 @@ namespace KCK_Console_project
         public void InfoPrint()
         {
             string text;                                        //
-            Console.SetCursorPosition(0, 15);                   //
+            Console.SetCursorPosition(20, 15);                   //
             Console.ForegroundColor = ConsoleColor.Magenta;     //
             Console.Write("/" + new string('-', 30) + "\\");    //
 
-            Console.SetCursorPosition(0, 16);
+            Console.SetCursorPosition(20, 16);
             Console.ForegroundColor = ConsoleColor.Magenta;     //
             Console.Write("|");                                 //
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -37,7 +37,7 @@ namespace KCK_Console_project
             Console.ForegroundColor = ConsoleColor.Magenta;     //
             Console.Write(new string(' ', 30 - text.Length) + "|"); //
 
-            Console.SetCursorPosition(0, 17);
+            Console.SetCursorPosition(20, 17);
             Console.ForegroundColor = ConsoleColor.Magenta;     //
             Console.Write("|");                                 //
             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -46,7 +46,7 @@ namespace KCK_Console_project
             Console.ForegroundColor = ConsoleColor.Magenta;     //
             Console.Write(new string(' ', 30 - text.Length) + "|"); //
 
-            Console.SetCursorPosition(0, 18);
+            Console.SetCursorPosition(20, 18);
             Console.ForegroundColor = ConsoleColor.Magenta;     //
             Console.Write("|");                                 //
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -55,7 +55,7 @@ namespace KCK_Console_project
             Console.ForegroundColor = ConsoleColor.Magenta;     //
             Console.Write(new string(' ', 30 - text.Length) + "|"); //
 
-            Console.SetCursorPosition(0, 19);
+            Console.SetCursorPosition(20, 19);
             Console.ForegroundColor = ConsoleColor.Magenta;     //
             Console.Write("|");                                 //
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -64,36 +64,36 @@ namespace KCK_Console_project
             Console.ForegroundColor = ConsoleColor.Magenta;     //
             Console.Write(new string(' ', 30 - text.Length) + "|"); //
 
-            Console.SetCursorPosition(0, 20);
+            Console.SetCursorPosition(20, 20);
             Console.Write("\\" + new string('-', 30) + "/");    //
 
-            Console.SetCursorPosition(0, 21);
+            Console.SetCursorPosition(20, 0);
             Console.Write("/" + new string('-', 46) + "\\");
 
-            Console.SetCursorPosition(0, 22);
+            Console.SetCursorPosition(20, 1);
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("|");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.Write("Zycie przeciwnikow ===== Amunicja ========");
-            text = "Zycie przeciwnikow ===== Amunicja ========";
+            Console.Write("Zycie przeciwnikow ==== Amunicja ========");
+            text = "Zycie przeciwnikow ==== Amunicja ========";
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write(new string(' ', 46 - text.Length) + "|");
 
             Console.ForegroundColor = ConsoleColor.Gray;
             for (int i = 0; i < 10; i++)
             {
-                Console.SetCursorPosition(0, i + 20 + 3);
+                Console.SetCursorPosition(20, i + 2);
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("|");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("Przeciwnik " + i + " : " + 0 + "     ");
-                Console.SetCursorPosition(25, i + 20 + 3);
+                Console.SetCursorPosition(45, i + 2);
                 Console.Write("Wiezyczka nr " + i + ": " + 0 + "     ");
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write("|");
             }
 
-            Console.SetCursorPosition(0, 33);
+            Console.SetCursorPosition(20, 12);
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("\\" + new string('-', 46) + "/");
             
@@ -163,7 +163,7 @@ namespace KCK_Console_project
                 Console.SetCursorPosition(0, 14);
                 Console.Write(resources.GetCurrentSymbol(1));
                 // Wyswietlenie wyniku.
-                Console.SetCursorPosition(0, 17);
+                Console.SetCursorPosition(20, 17);
                 Console.ForegroundColor = ConsoleColor.Magenta;     //
                 Console.Write("|");                                 //
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -181,7 +181,7 @@ namespace KCK_Console_project
                 Console.SetCursorPosition(9, 14);
                 Console.Write(resources.GetCurrentSymbol(0));
                 // Wyswietleniue wyniku.
-                Console.SetCursorPosition(0, 18);
+                Console.SetCursorPosition(20, 18);
                 Console.ForegroundColor = ConsoleColor.Magenta;     //
                 Console.Write("|");
                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -197,7 +197,7 @@ namespace KCK_Console_project
         public void UpdateResources()
         {
             string text;
-            Console.SetCursorPosition(0, 17);
+            Console.SetCursorPosition(20, 17);
             Console.ForegroundColor = ConsoleColor.Magenta; //
             Console.Write("|");                             //
             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -206,7 +206,7 @@ namespace KCK_Console_project
             Console.ForegroundColor = ConsoleColor.Magenta; //
             Console.Write(new string(' ', 30 - text.Length) + "|"); //
 
-            Console.SetCursorPosition(0, 18);
+            Console.SetCursorPosition(20, 18);
             Console.ForegroundColor = ConsoleColor.Magenta; //
             Console.Write("|");                             //
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -293,12 +293,12 @@ namespace KCK_Console_project
                         magazine = 0;
                     else
                         magazine = turrets.ElementAt(e.GetX()).GetAmmo();
-                    Console.SetCursorPosition(0, e.GetX() + 23);
+                    Console.SetCursorPosition(20, e.GetX() + 2);
                     Console.ForegroundColor = ConsoleColor.Magenta;     //
                     Console.Write("|");                                 //
                     Console.ForegroundColor = ConsoleColor.Gray;        //
                     Console.Write("Przeciwnik " + e.GetX() + " : " + e.GetHP() + "     ");
-                    Console.SetCursorPosition(25, e.GetX() + 23);
+                    Console.SetCursorPosition(45, e.GetX() + 2);
                     Console.Write("Wiezyczka nr " + e.GetX() + ": " + magazine + "     ");
                     Console.ForegroundColor = ConsoleColor.Magenta;     //
                     Console.Write("|");                                 //
@@ -309,7 +309,7 @@ namespace KCK_Console_project
 
         public void RefreshAmmo(Turret turret)
         {
-            Console.SetCursorPosition(25, turret.GetX() + 23);
+            Console.SetCursorPosition(45, turret.GetX() + 2);
             Console.Write("Wiezyczka nr " + turret.GetX() + ": " + turret.GetAmmo() + "     ");
         }
     }

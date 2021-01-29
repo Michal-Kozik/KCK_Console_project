@@ -159,7 +159,7 @@ namespace KCK_Console_project
                             shouldRefresh = true;
                             string text;
                             score += 250;
-                            Console.SetCursorPosition(0, 16);
+                            Console.SetCursorPosition(20, 16);
                             Console.ForegroundColor = ConsoleColor.Magenta; //
                             Console.Write("|");                             //
                             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -193,7 +193,7 @@ namespace KCK_Console_project
                         {
                             string text;
                             hp -= e.GetDmg();
-                            Console.SetCursorPosition(0, 19);
+                            Console.SetCursorPosition(20, 19);
                             Console.ForegroundColor = ConsoleColor.Magenta; //
                             Console.Write("|");                             //
                             Console.ForegroundColor = ConsoleColor.DarkRed;
